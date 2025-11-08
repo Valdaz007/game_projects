@@ -1,0 +1,11 @@
+
+header {
+    background-color: darkblue;
+    padding: 0px;
+    margin: 0px;
+    height: 10vh;
+}
+
+#dice {
+    border: 3px solid black;
+}
