@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Dice App</title>
+	</head>
+	
+	<style>
+		header {
+			background-color: darkblue;
+			padding: 0px;
+			margin: 0px;
+			height: 10vh;
+		}
+		#dice {
+			border: 3px solid black;
+		}
+	</style>
+	
+	<body style="background-color: lightblue; margin: 0px;">
+		<header>
+			<h1 style="width: 700px; margin: 0px auto; padding: 20px 0px 0px 0px; color: white;">Dice App</h1>
+		</header>
+		
+		<main style="width: 600px; margin: 0px auto; padding-top: 20px; height: 73.5vh;">
+			<svg id="dice" width="100" height="100" viewBox="0,0,100,100">
+				<circle r="5" cx="50" cy="50"/>
+				<g>
+					<circle r="5" cx="150" cy="30"/>
+					<circle r="5" cx="150" cy="70"/>
+				</g>
+				<g>
+					<circle r="5" cx="225" cy="25"/>
+					<circle r="5" cx="250" cy="50"/>
+					<circle r="5" cx="275" cy="75"/>
+				</g>
+				<g>
+					<circle r="5" cx="325" cy="25"/>
+					<circle r="5" cx="375" cy="25"/>
+					<circle r="5" cx="325" cy="75"/>
+					<circle r="5" cx="375" cy="75"/>
+				</g>
+				<g>
+					<circle r="5" cx="425" cy="25"/>
+					<circle r="5" cx="475" cy="25"/>
+					<circle r="5" cx="425" cy="75"/>
+					<circle r="5" cx="475" cy="75"/>
+					<circle r="5" cx="450" cy="50"/>
+				</g>
+				<g>
+					<circle r="5" cx="525" cy="25"/>
+					<circle r="5" cx="575" cy="25"/>
+					<circle r="5" cx="525" cy="75"/>
+					<circle r="5" cx="575" cy="75"/>
+					<circle r="5" cx="525" cy="50"/>
+					<circle r="5" cx="575" cy="50"/>
+				</g>
+			</svg>
+			<br/>
+			<button onclick="roll();">Roll</button>
+		</main>
+		
+		<footer style="background-color: black; height: 10vh;">
+			<p>Dice App</p>
+		</footer>
+		
+		<script>
+			var x = 0;
+			function roll(){
+				if (x >= 500) { x = 0; }
+				else { x +=100; }
+				document.querySelector('svg').viewBox.baseVal.x = x;
+			}
+		</script>
+	</body>
+</html>
