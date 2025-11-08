@@ -1,7 +1,7 @@
-
-var x = 0;
 function roll(){
-    if (x >= 500) { x = 0; }
-    else { x +=100; }
+    x = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
+    x = x*100;
     document.querySelector('svg').viewBox.baseVal.x = x;
 }
+
+roll()
