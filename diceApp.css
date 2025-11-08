@@ -17,6 +17,8 @@ header {
     align-items: center;
 
     & h1 {
+        width: 60%;
+        margin: 0 auto;
         color: white;
     }
 }
@@ -26,8 +28,29 @@ main {
     padding: 2rem;
 }
 
+#mainWrap {
+    width: 60%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
 #dice {
+    margin-bottom: 1rem;
+
     border: 3px solid black;
+    border-radius: .5rem;
+
+}
+
+#btnRoll {
+    width: 100px;
+    padding: .3rem;
+    
+    background-color: transparent;
+    border: 2px solid darkkhaki;
+    border-radius: .5rem;
 }
 
 footer {
