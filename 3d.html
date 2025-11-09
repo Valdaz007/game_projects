@@ -31,15 +31,15 @@
 
         .box {
             transform-style: preserve-3d;
-            /* perspective: 500px; */
 
             width: 200px;
             height: 200px;
-            border: 1px solid red;
 
             position: relative;
 
             transform: rotate3d(1, 1, 1, 30deg);
+
+            animation: roll 25s linear infinite;
         }
 
         .side {
@@ -77,6 +77,12 @@
         .bottom {
             background-color: yellow;
             transform: translateY(100px) rotateX(-90deg);
+        }
+
+        @keyframes roll {
+            0% { transform: rotate3d(0, 0, 1, 0); }
+            50% { transform: rotate3d(1, 0, 1, 720deg); }
+            100% { transform: rotate3d(0, 0, 1, 0); }
         }
     </style>
 </body>
