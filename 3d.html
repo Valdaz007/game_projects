@@ -77,46 +77,45 @@
 
             transform: rotate3d(1, 1, 1, 30deg);
 
-            animation: roll 25s linear infinite;
+            animation: roll 3s linear infinite;
         }
 
         .side {
             position: absolute;
             aspect-ratio: 1/1;
             width: 200px;
-            opacity: .45;
 
             padding: 1rem;
             display: grid;
         }
 
         .front {
-            background-color: green;
+            background-color: rgba(0, 128, 0, 0.75);
             transform: translateZ(-100px);
         }
 
         .back {
-            background-color: blue;
+            background-color: rgba(0, 0, 255, 0.75);
             transform: translateZ(100px);
         }
 
         .right {
-            background-color: red;
+            background-color: rgba(255, 0, 0, 0.75);
             transform: translateX(100px) rotateY(90deg);
         }
 
         .left {
-            background-color: orange;
+            background-color: rgba(255, 166, 0, 0.75);
             transform: translateX(-100px) rotateY(-90deg);
         }
 
         .top {
-            background-color: hotpink;
+            background-color: rgba(255, 105, 180, 0.75);
             transform: translateY(-100px) rotateX(90deg);
         }
 
         .bottom {
-            background-color: yellow;
+            background-color: rgba(255, 255, 0, 0.75);
             transform: translateY(100px) rotateX(-90deg);
         }
 
@@ -144,9 +143,9 @@
         }
 
         @keyframes roll {
-            0% { transform: rotate3d(0, 0, 1, 0); }
-            50% { transform: rotate3d(1, 0, 1, 720deg); }
-            100% { transform: rotate3d(0, 0, 1, 0); }
+            0% { transform: rotate3d(0, 0, 0, 0deg); }
+            50% { transform: rotateX(540deg) rotateY(360deg) }
+            100% { transform: rotateX(720deg) rotateY(-540deg) }
         }
     </style>
 </body>
