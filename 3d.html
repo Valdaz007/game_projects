@@ -154,12 +154,12 @@
         const five = "rotate3d(1, 0, 0, -90deg)"
         const six = "rotate3d(1, 0, 0, 90deg)"
 
-        let endSide = three
+        let startSide = one
+        let endSide = ""
         let dice = document.getElementById('dice');
 
         function roll(){
             x = Math.floor(Math.random() * (6 - 1 + 1)) + 1
-            console.log(x);
             rollAnimation(x)
         }
 
@@ -171,12 +171,10 @@
             if(ranNum == 5) endSide = five
             if(ranNum == 6) endSide = six
 
-            console.log(endSide)
-
             dice.animate(
                 [
                     {
-                        transform: "rotate3d(1, 0, 0, 180deg)"
+                        transform: startSide
                     },
                     {
                         transform: "rotateX(720deg) rotateY(720deg)"
@@ -189,10 +187,12 @@
                     }
                 ],
                 {
-                    duration: 5000,
+                    duration: 3500,
+                    easing: "ease-in-out",
                     fill: "forwards"
                 }
             )
+            startSide = endSide
         }
 
     </script>
