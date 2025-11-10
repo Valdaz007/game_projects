@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>3D Dice Sim</title>
 </head>
 <body>
     <div class="box" id="dice">
@@ -42,7 +42,7 @@
         </div>
     </div>
     <br><br><br>
-    <button onclick="rollAnimation()">Roll</button>
+    <button onclick="roll()">Roll</button>
 
     <style>
         * {
@@ -93,32 +93,32 @@
         }
 
         .front {
-            background-color: rgba(0, 128, 0, 0.75);
+            background-color: rgba(0, 128, 0);
             transform: translateZ(-100px);
         }
 
         .back {
-            background-color: rgba(0, 0, 255, 0.75);
+            background-color: rgba(0, 0, 255);
             transform: translateZ(100px);
         }
 
         .right {
-            background-color: rgba(255, 0, 0, 0.75);
+            background-color: rgba(255, 0, 0);
             transform: translateX(100px) rotateY(90deg);
         }
 
         .left {
-            background-color: rgba(255, 166, 0, 0.75);
+            background-color: rgba(255, 166, 0);
             transform: translateX(-100px) rotateY(-90deg);
         }
 
         .top {
-            background-color: rgba(255, 105, 180, 0.75);
+            background-color: rgba(255, 105, 180);
             transform: translateY(-100px) rotateX(90deg);
         }
 
         .bottom {
-            background-color: rgba(255, 255, 0, 0.75);
+            background-color: rgba(255, 255, 0);
             transform: translateY(100px) rotateX(-90deg);
         }
 
@@ -153,11 +153,26 @@
         const four = "rotate3d(0, 1, 0, 90deg)"
         const five = "rotate3d(1, 0, 0, -90deg)"
         const six = "rotate3d(1, 0, 0, 90deg)"
-        
+
         let endSide = three
         let dice = document.getElementById('dice');
 
-        function rollAnimation(){
+        function roll(){
+            x = Math.floor(Math.random() * (6 - 1 + 1)) + 1
+            console.log(x);
+            rollAnimation(x)
+        }
+
+        function rollAnimation(ranNum){
+            if(ranNum == 1) endSide = one
+            if(ranNum == 2) endSide = two
+            if(ranNum == 3) endSide = three
+            if(ranNum == 4) endSide = four
+            if(ranNum == 5) endSide = five
+            if(ranNum == 6) endSide = six
+
+            console.log(endSide)
+
             dice.animate(
                 [
                     {
