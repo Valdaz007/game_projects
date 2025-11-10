@@ -2,10 +2,12 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+    font-family: oswald;
 }
 
 body {
-    background-color: aliceblue;
+    background-color: #333;
 }
 
 header {
@@ -30,20 +32,102 @@ main {
 
 #mainWrap {
     width: 60%;
+    height: 100%;
     margin: 0 auto;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-#dice { 
+:root {
+    --dice-width: 150px;
+}
+
+.box {
+    transform-style: preserve-3d;
+
     aspect-ratio: 1/1;
-    width: 25%;
-    margin-bottom: 1rem;
+    width: var(--dice-width);
+    margin-bottom: 4rem;
 
-    border: 3px solid black;
-    border-radius: .5rem;
+    position: relative;
 
+    transform: rotate3d(1, 0, 0, -180deg);
+}
+
+.side {
+    position: absolute;
+    aspect-ratio: 1/1;
+    width: var(--dice-width);
+
+    padding: 1rem;
+    display: grid;
+}
+
+.front {
+    background-color: rgba(0, 128, 0);
+    transform: translateZ(calc(var(--dice-width) / -2));
+}
+
+.back {
+    background-color: rgba(0, 0, 255);
+    transform: translateZ(calc(var(--dice-width) / 2));
+}
+
+.right {
+    background-color: rgba(255, 0, 0);
+    transform: translateX(calc(var(--dice-width) / 2)) rotateY(90deg);
+}
+
+.left {
+    background-color: rgba(255, 166, 0);
+    transform: translateX(calc(var(--dice-width) / -2)) rotateY(-90deg);
+}
+
+.top {
+    background-color: rgba(255, 105, 180);
+    transform: translateY(calc(var(--dice-width) / 2)) rotateX(90deg);
+}
+
+.bottom {
+    background-color: rgba(255, 255, 0);
+    transform: translateY(calc(var(--dice-width) / -2)) rotateX(-90deg);
+}
+
+.dot {
+    aspect-ratio: 1/1;
+    width: 25px;
+    background-color: black;
+
+    border-radius: 50%;
+
+    align-self: center;
+    justify-self: center;
+}
+
+.one {
+    grid-template-rows: repeat(1, 100%);
+    grid-template-columns: repeat(1, 100%);
+}
+
+.two {
+    grid-template-columns: repeat(2, 50%);
+}
+
+.three {
+    grid-template-columns: repeat(3, 33.33%);
+}
+
+.four {
+    grid-template-rows: repeat(2, 50%);
+    grid-template-columns: repeat(2, 50%);
+}
+
+.five-six {
+    grid-template-rows: repeat(3, 33.33%);
+    grid-template-columns: repeat(2, 50%);
 }
 
 #btnRoll {
@@ -72,7 +156,7 @@ main {
         border-radius: .5rem;
         z-index: -1;
 
-        transition: all 800ms;  
+        transition: all 3500ms;  
     }
 
     &:active:after {
@@ -89,7 +173,7 @@ main {
 
 footer {
     height: 50px;
-    background-color: #333;
+    background-color: #000;
 
     display: flex;
     align-items: center;
