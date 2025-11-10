@@ -8,19 +8,28 @@ const six = "rotate3d(1, 0, 0, 90deg)"
 let startSide = one
 let endSide = ""
 let dice = document.getElementById('dice');
+const btnRoll = document.getElementById('btnRoll');
 
 function roll(){
     x = Math.floor(Math.random() * (6 - 1 + 1)) + 1
     rollAnimation(x)
+
+    btnRoll.disabled = true
+
+    setTimeout(()=>{
+        btnRoll.disabled = false
+    }, 3500)
 }
 
 function rollAnimation(ranNum){
-    if(ranNum == 1) endSide = one
-    if(ranNum == 2) endSide = two
-    if(ranNum == 3) endSide = three
-    if(ranNum == 4) endSide = four
-    if(ranNum == 5) endSide = five
-    if(ranNum == 6) endSide = six
+    switch(ranNum){
+        case 1: endSide = one; break;
+        case 2: endSide = two; break;
+        case 3: endSide = three; break;
+        case 4: endSide = four; break;
+        case 5: endSide = five; break;
+        case 6: endSide = six; break;
+    }
 
     dice.animate(
         [

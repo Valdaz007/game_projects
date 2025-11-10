@@ -159,7 +159,7 @@ main {
         transition: all 3500ms;  
     }
 
-    &:active:after {
+    &:enabled:active::after {
         left: 0;
         opacity: 1;
         transition: 0s;
