@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="box">
+    <div class="box" id="dice">
         <div class="side front one">
             <div class="dot"></div>
         </div>
@@ -41,6 +41,8 @@
             <div class="dot"></div>
         </div>
     </div>
+    <br><br><br>
+    <button onclick="rollAnimation()">Roll</button>
 
     <style>
         * {
@@ -52,6 +54,7 @@
             background-color: #333;
 
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
@@ -75,9 +78,9 @@
 
             position: relative;
 
-            transform: rotate3d(1, 1, 1, 30deg);
+            transform: rotate3d(1, 0, 0, -180deg);
 
-            animation: roll 3s linear infinite;
+            /* animation: roll 3s linear forwards; */
         }
 
         .side {
@@ -141,12 +144,42 @@
             grid-template-rows: repeat(3, 33.33%);
             grid-template-columns: repeat(2, 50%);
         }
-
-        @keyframes roll {
-            0% { transform: rotate3d(0, 0, 0, 0deg); }
-            50% { transform: rotateX(540deg) rotateY(360deg) }
-            100% { transform: rotateX(720deg) rotateY(-540deg) }
-        }
     </style>
+
+    <script>
+        const one = "rotate3d(1, 0, 0, 180deg)"
+        const two = "rotate3d(1, 0, 0, 0deg)"
+        const three = "rotate3d(0, 1, 0, -90deg)"
+        const four = "rotate3d(0, 1, 0, 90deg)"
+        const five = "rotate3d(1, 0, 0, -90deg)"
+        const six = "rotate3d(1, 0, 0, 90deg)"
+        
+        let endSide = three
+        let dice = document.getElementById('dice');
+
+        function rollAnimation(){
+            dice.animate(
+                [
+                    {
+                        transform: "rotate3d(1, 0, 0, 180deg)"
+                    },
+                    {
+                        transform: "rotateX(720deg) rotateY(720deg)"
+                    },
+                    {
+                        transform: "rotateX(-540deg) rotateY(540deg)"
+                    },
+                    {
+                        transform: endSide
+                    }
+                ],
+                {
+                    duration: 5000,
+                    fill: "forwards"
+                }
+            )
+        }
+
+    </script>
 </body>
 </html>
