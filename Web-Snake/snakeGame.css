@@ -1,0 +1,13 @@
+main div {
+	position: fixed;
+	background-color: red;
+	width: 20px;
+	height: 20px;
+	border-radius: 3px;
+}
+
+main {
+	border: 1px solid red;
+	width: 700px;
+	height: 500px;
+}
