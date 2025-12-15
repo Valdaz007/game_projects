@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>The Awsomest Trivia Game</title>
+</head>
+<body>
+    <div class="console">
+        <h1>The Awesomest Trivia Game</h1>
+        <div class="question mb-3" id="q10s"></div>
+        <div class="answers">
+            <input type="radio" class="choice" id="a" name="choice" value="a" onchange="setLableActive()">
+            <label for="a" id="lbla"></label><br>
+            <input type="radio" class="choice" id="b" name="choice" value="b" onchange="setLableActive()">
+            <label for="b" id="lblb"></label><br>
+            <input type="radio" class="choice" id="c" name="choice" value="c" onchange="setLableActive()">
+            <label for="c" id="lblc"></label><br>
+            <input type="radio" class="choice" id="d" name="choice" value="d" onchange="setLableActive()">
+            <label for="d" id="lbld"></label>
+        </div>
+        <div class="subBtn">
+            <button class="btn btn-sm btn-success" id="nxtQ10Btn">Next Question</button>
+        </div>
+    </div>
+</body>
+    <style>
+        .console {
+            width: 80%;
+            max-width: 550px;
+            height: fit-content;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 5px #cccccc22;
+            background: #11111155;
+        }
+
+        .answers {
+            & input {
+                display: none;
+            }
+
+            & label {
+                width: 200px;
+                padding: .5rem;
+                margin-bottom: 1rem;
+                border: 2px solid whitesmoke;
+                box-shadow: 0 0 5px #cccccc88 inset;
+                border-radius: .4rem;
+                text-align: left;
+                cursor: pointer;
+
+                transition: box-shadow 300ms ease-in-out;
+
+                &:hover {
+                    box-shadow: 0 0 10px #ffffff inset;
+                }
+            }
+        }
+    </style>
+
+    <script>
+        let qidx = 0
+        let selectedAns = ''
+        async function fetchTriviaQ10s(){
+            const apiUrl = "https://opentdb.com/api.php?amount=3&category=32&difficulty=easy&type=multiple"
+
+            try {
+                const res = await fetch(apiUrl)
+
+                if(!res.ok){
+                    throw new Error("Fetching Fail")
+                }
+
+                const data = await res.json()
+                console.log(data)
+
+                return data['results']
+            } 
+            catch (error) {
+                console.log(error)
+            }
+        }
+
+        function nextQ10s(arr){
+            document.getElementById('q10s').innerText = arr[qidx]['question']
+            document.getElementById('lbla').innerText = arr[qidx]['correct_answer']
+            document.getElementById('lblb').innerText = arr[qidx]['incorrect_answers'][0]
+            document.getElementById('lblc').innerText = arr[qidx]['incorrect_answers'][1]
+            document.getElementById('lbld').innerText = arr[qidx]['incorrect_answers'][2]
+            qidx = qidx<2 ? qidx+1 : qidx=0
+        }
+
+        function setLableActive(){
+            console.log('Hello')
+        }
+
+        let q10s = JSON.parse(`{
+            "response_code": 0,
+            "results": [
+                {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Entertainment: Cartoon &amp; Animations",
+                "question": "Which of the following did not feature in the cartoon &#039;Wacky Races&#039;?",
+                "correct_answer": "The Dragon Wagon",
+                "incorrect_answers": [
+                    "The Bouldermobile",
+                    "The Crimson Haybailer",
+                    "The Compact Pussycat"
+                ]
+                },
+                {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Entertainment: Cartoon &amp; Animations",
+                "question": "In &quot;Avatar: The Last Airbender&quot;, which element does Aang begin to learn after being defrosted?",
+                "correct_answer": "Water",
+                "incorrect_answers": [
+                    "Air",
+                    "Earth",
+                    "Fire"
+                ]
+                },
+                {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Entertainment: Cartoon &amp; Animations",
+                "question": "Which Teenage Mutant Ninja Turtle traditionally wears an orange bandana?",
+                "correct_answer": "Michelangelo",
+                "incorrect_answers": [
+                    "Leonardo",
+                    "Donatello",
+                    "Raphael"
+                ]
+                }
+            ]
+            }`
+        )
+        console.log(q10s['results'])
+        nextQ10s(q10s['results'])
+
+        let nxtQ10Btn = document.getElementById('nxtQ10Btn')
+        nxtQ10Btn.addEventListener('click', ()=>{ nextQ10s(q10s['results']) })
+    </script>
+</html>
