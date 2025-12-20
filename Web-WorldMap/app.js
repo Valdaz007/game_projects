@@ -12,8 +12,20 @@ countryCode = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnistan
                 {"CX": "Christmas Island"},{"CY": "Cyprus"},{"CZ": "Czech Republic"}]`
 countryCode = JSON.parse(countryCode)
 
-countryCode.forEach((i)=>{
-    $('.flags').append(`
-        <img src='https://flagsapi.com/${Object.keys(i).join('')}/flat/64.png'>
-    `)
+// countryCode.forEach((i)=>{
+//     $('.flags').append(`
+//         <img src='https://flagsapi.com/${Object.keys(i).join('')}/flat/64.png'>
+//     `)
+// })
+
+$('#flagQz').click(function(e){
+    alert('Feature Still Under Developement!')
+})
+
+$('#shapeQz').click(function(e){
+    alert('Feature Still Under Developement!')
+})
+
+$('#mixQz').click(function(e){
+    alert('Feature Still Under Developement!')
 })
