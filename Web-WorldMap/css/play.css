@@ -45,7 +45,7 @@
     }
 
     .choice:hover {
-        background: #fff;
+        background: goldenrod;
 
         .lbl {
             background-color: turquoise;
@@ -74,6 +74,21 @@ body .mainplay .nextFlagQz {
 }
 
 body .mainplay h5 {
-    color: aliceblue;
+    color: goldenrod;
+    font-weight: 400;
     text-align: center;
+}
+
+@media(min-width: 1024px){
+    body h1 {
+        margin-bottom: .5rem;
+    }
+
+    .info, .playflag {
+        margin-bottom: .4rem;
+    }
+
+    body .mainplay .nextFlagQz {
+        margin-bottom: .5rem;
+    }
 }

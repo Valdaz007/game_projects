@@ -34,9 +34,14 @@ function checkUsername(){
     return $('.uname').val()==''
 }
 
-function setCurrentQzChoice(choice){
+function setCurrentQzChoice(choice, idx){
     currentQzChoice = choice;
     console.log(currentQzChoice)
+
+    for(let i=1; i<5; i++){
+        $(`#ch${i}`).css('background-color', '#ccc');
+    }
+    $(`#ch${idx}`).css('background-color', 'goldenrod')
 }
 
 $('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game
@@ -74,7 +79,7 @@ function newGameFlagQz(){
     gameResult.push({'correct':gameCode.shift()}) //Removing Correct Country Game Array to Results Array
     choiceArr = shuffleCountry(choiceArr) //Randomize Multi Choice Array
     choiceArr.forEach((i, idx) => {
-        $(`#ch${idx+1}`).attr('onclick', `setCurrentQzChoice('${Object.keys(i).join('')}')`)
+        $(`#ch${idx+1}`).attr('onclick', `setCurrentQzChoice('${Object.keys(i).join('')}', ${idx+1})`)
         $(`#chc${idx+1}`).text(`${i[Object.keys(i).join('')]}`) //Set Multi Choice DOM Elements
     });
 
