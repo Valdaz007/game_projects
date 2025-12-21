@@ -38,9 +38,22 @@ function setCurrentQzChoice(choice, idx){
     currentQzChoice = choice;
 
     for(let i=1; i<5; i++){
-        $(`#ch${i}`).css('background-color', '#ccc');
+        $(`#ch${i}`).css('background-color', '#ccc')
+        $(`#ch${i}`).hover(
+            function(){ 
+                $(this).css('background-color', '#fff') 
+            },
+            function(){
+                $(this).css('background-color', '#ccc');
+            }
+        );
     }
+
     $(`#ch${idx}`).css('background-color', 'goldenrod')
+    $(`#ch${idx}`).hover(
+        function(){ $(this).css('background-color', 'goldenrod') },
+        function(){ $(this).css('background-color', 'goldenrod') }
+    );
 }
 
 $('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game

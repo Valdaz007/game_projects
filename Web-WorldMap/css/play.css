@@ -45,7 +45,7 @@
     }
 
     .choice:hover {
-        background: goldenrod;
+        background: #fff;
 
         .lbl {
             background-color: turquoise;
