@@ -12,6 +12,7 @@ countryCodeOG = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnist
                 {"CX": "Christmas Island"},{"CY": "Cyprus"},{"CZ": "Czech Republic"}]`
 countryCodeOG = JSON.parse(countryCodeOG);
 gameResult = [] //{'correct':'', 'answer':''}
+currentQzChoice = null
 
 
 function shuffleCountry(array){
@@ -33,6 +34,11 @@ function checkUsername(){
     return $('.uname').val()==''
 }
 
+function setCurrentQzChoice(choice){
+    currentQzChoice = choice;
+    console.log(currentQzChoice)
+}
+
 $('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game
     if(checkUsername()){
         alert('Please Enter Username to Continue!')
@@ -42,6 +48,17 @@ $('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game
         newGameFlagQz()
     }
 })
+
+function onAnsSubmit(){    
+    if(currentQzChoice==null){
+        alert('Please Select Answer!')
+    }
+    else {
+        gameResult.at(-1).answer = currentQzChoice;
+        currentQzChoice = null;
+        newGameFlagQz();
+    }
+}
 
 function newGameFlagQz(){
     //Function to Load New Flag Quiz
@@ -57,10 +74,11 @@ function newGameFlagQz(){
     gameResult.push({'correct':gameCode.shift()}) //Removing Correct Country Game Array to Results Array
     choiceArr = shuffleCountry(choiceArr) //Randomize Multi Choice Array
     choiceArr.forEach((i, idx) => {
+        $(`#ch${idx+1}`).attr('onclick', `setCurrentQzChoice('${Object.keys(i).join('')}')`)
         $(`#chc${idx+1}`).text(`${i[Object.keys(i).join('')]}`) //Set Multi Choice DOM Elements
     });
 
-    console.log(gameCode)
+    // console.log(gameCode)
     console.log(gameResult)
 }
 

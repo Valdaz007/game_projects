@@ -57,27 +57,29 @@ class PlayTemp extends HTMLElement {
             <div class='mainplay'>
                 <div class='playflag'></div>
                 <div class='playChoices'>
-                    <div class='choice'>
+                    <div class='choice' id='ch1'>
                         <p class='lbl'>A</p>
                         <p id='chc1'>Choice 1</p>
                     </div>
-                    <div class='choice'>
+                    <div class='choice' id='ch2'>
                         <p class='lbl'>B</p>
                         <p id='chc2'>Choice 2</p>
                     </div>
-                    <div class='choice'>
+                    <div class='choice' id='ch3'>
                         <p class='lbl'>C</p>
                         <p id='chc3'>Choice 3</p>
                     </div>
-                    <div class='choice'>
+                    <div class='choice' id='ch4'>
                         <p class='lbl'>D</p>
                         <p id='chc4'>Choice 4</p>
                     </div>
                 </div>
 
                 <div class='nextFlagQz'>
-                    <button id='btnNxtFlagQz' onclick='newGameFlagQz()'>Next Flag</button>
+                    <button id='btnNxtFlagQz' onclick='onAnsSubmit()'>Submit</button>
                 </div>
+
+                <h5>Submit for Next Flag Quiz</h5>
             </div>
         `
     }

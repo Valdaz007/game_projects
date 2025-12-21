@@ -29,6 +29,7 @@
     flex-direction: column;
     gap: .8rem;
     margin-bottom: 1rem;
+    cursor: pointer;
 
     .choice {
         background: #ccc;
@@ -56,6 +57,7 @@ body .mainplay .nextFlagQz {
     width: 80%;
     margin: 0 auto;
     max-width: 300px;
+    margin-bottom: 1rem;
 
     #btnNxtFlagQz {
         width: 100%;
@@ -69,4 +71,9 @@ body .mainplay .nextFlagQz {
 
         cursor: pointer;
     }
+}
+
+body .mainplay h5 {
+    color: aliceblue;
+    text-align: center;
 }
