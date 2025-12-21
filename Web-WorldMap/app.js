@@ -15,6 +15,10 @@ gameResult = [] //{'correct':'', 'answer':''}
 
 
 function shuffleCountry(array){
+    //Function to Randomize an Array
+    //Pass in an array as the parameter an it returns
+    //a randomized array of the passing in array.
+
     for(let i = array.length-1; i > 0; i--){
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
@@ -23,10 +27,13 @@ function shuffleCountry(array){
 }
 
 function checkUsername(){
+    //Function to Check Username Input
+    //Check if username name is empty and return true or false
+
     return $('.uname').val()==''
 }
 
-$('#flagQz').click(function(e){
+$('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game
     if(checkUsername()){
         alert('Please Enter Username to Continue!')
     }
@@ -37,6 +44,8 @@ $('#flagQz').click(function(e){
 })
 
 function newGameFlagQz(){
+    //Function to Load New Flag Quiz
+
     $('body').empty()
     $('body').append('<temp-play></temp-play>')
 
@@ -44,21 +53,21 @@ function newGameFlagQz(){
         <img src='https://flagsapi.com/${Object.keys(gameCode[0]).join('')}/flat/64.png'>
     `);
 
-    let choiceArr = gameCode.slice(0, 4);
-    gameResult.push({'correct':gameCode.shift()})
-    choiceArr = shuffleCountry(choiceArr)
+    let choiceArr = gameCode.slice(0, 4); //Slice the first four items of array to new array which are the four multiple choices
+    gameResult.push({'correct':gameCode.shift()}) //Removing Correct Country Game Array to Results Array
+    choiceArr = shuffleCountry(choiceArr) //Randomize Multi Choice Array
     choiceArr.forEach((i, idx) => {
-        $(`#chc${idx+1}`).text(`${i[Object.keys(i).join('')]}`)
+        $(`#chc${idx+1}`).text(`${i[Object.keys(i).join('')]}`) //Set Multi Choice DOM Elements
     });
 
     console.log(gameCode)
     console.log(gameResult)
 }
 
-$('#shapeQz').click(function(e){
+$('#shapeQz').click(function(e){ //Event Listener for Shape Quiz Game
     alert('Feature Still Under Developement!')
 })
 
-$('#mixQz').click(function(e){
+$('#mixQz').click(function(e){ //Event Listener for Mixed Quiz Game
     alert('Feature Still Under Developement!')
 })
