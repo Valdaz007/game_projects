@@ -36,7 +36,6 @@ function checkUsername(){
 
 function setCurrentQzChoice(choice, idx){
     currentQzChoice = choice;
-    console.log(currentQzChoice)
 
     for(let i=1; i<5; i++){
         $(`#ch${i}`).css('background-color', '#ccc');

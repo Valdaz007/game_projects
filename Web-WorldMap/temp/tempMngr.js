@@ -46,7 +46,6 @@ class TempIndex extends HTMLElement {
 }
 
 class PlayTemp extends HTMLElement {
-
     connectedCallback() {
         this.innerHTML = `
             <h1>WORLDMAPQuiz Game</h1>
