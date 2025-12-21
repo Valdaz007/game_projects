@@ -13,6 +13,7 @@ countryCodeOG = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnist
 countryCodeOG = JSON.parse(countryCodeOG);
 gameResult = [] //{'correct':'', 'answer':''}
 currentQzChoice = null
+let strikes = 0; //Incorrect Counter
 
 
 function shuffleCountry(array){
@@ -66,14 +67,19 @@ $('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game
     }
 })
 
-function onAnsSubmit(){    
+function checkAnswer(){
+    gameResult.at(-1).correct!=currentQzChoice && strikes++;
+}
+
+function onAnsSubmit(){
     if(currentQzChoice==null){
         alert('Please Select Answer!')
     }
     else {
+        checkAnswer()
         gameResult.at(-1).answer = currentQzChoice;
         currentQzChoice = null;
-        newGameFlagQz();
+        strikes < 3 ? newGameFlagQz() : alert('Game Over!');
     }
 }
 
@@ -83,12 +89,19 @@ function newGameFlagQz(){
     $('body').empty()
     $('body').append('<temp-play></temp-play>')
 
+    if(strikes>0){
+        for(let i = 1; i<=strikes; i++){
+            $(`#strike${i}`).prop('src', './img/icon-strike.png')
+        }
+    }
+
     $('.playflag').append(`
         <img src='https://flagsapi.com/${Object.keys(gameCode[0]).join('')}/flat/64.png'>
     `);
 
     let choiceArr = gameCode.slice(0, 4); //Slice the first four items of array to new array which are the four multiple choices
-    gameResult.push({'correct':gameCode.shift()}) //Removing Correct Country Game Array to Results Array
+    gameResult.push({'correct':Object.keys(gameCode[0]).join('')}) //Push Correct Country to Result Array
+    gameCode.shift(); //Remove Quized Country From Game Array
     choiceArr = shuffleCountry(choiceArr) //Randomize Multi Choice Array
     choiceArr.forEach((i, idx) => {
         $(`#ch${idx+1}`).attr('onclick', `setCurrentQzChoice('${Object.keys(i).join('')}', ${idx+1})`)

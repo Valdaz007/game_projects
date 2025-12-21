@@ -51,7 +51,12 @@ class PlayTemp extends HTMLElement {
             <h1>WORLDMAPQuiz Game</h1>
             <div class='info'>
                 <h5>How far can you go guessing the Countries Flag?</h5>
-                <h5>Game ends when guessed wrong or all flags are finished.</h5>   
+                <div class="strikes">
+                    <h5>Strikes:</h5>
+                    <img id='strike1' src='./img/icon-strike-dark.png' alt='Strikes'>
+                    <img id='strike2' src='./img/icon-strike-dark.png' alt='Strikes'>
+                    <img id='strike3' src='./img/icon-strike-dark.png' alt='Strikes'>
+                </div>   
             </div>
             <div class='mainplay'>
                 <div class='playflag'></div>
