@@ -1,4 +1,4 @@
-countryCodeOG = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnistan"},{"AG":"Antigua & Barbuda"},
+let countryCodeOG = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnistan"},{"AG":"Antigua & Barbuda"},
                 {"AI":"Anguilla"},{"AL":"Albanida"},{"AM":"Armenia"},{"AN":"Netherland Antilles"},{"AO":"Angola"},
                 {"AQ":"Antarctica"},{"AR":"Argentina"},{"AS":"America Somoa"},{"AT":"Austria"},{"AU":"Australia"},
                 {"AW":"Aruba"},{"AX":"Aland Islands"},{"AZ":"Azerbaijan"},{"BA": "Bosnia and Herzegovina"},
@@ -11,8 +11,9 @@ countryCodeOG = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnist
                 {"CN": "China"},{"CO": "Colombia"},{"CR": "Costa Rica"},{"CU": "Cuba"},{"CV": "Cape Verde"},{"CW": "Curacoa"},
                 {"CX": "Christmas Island"},{"CY": "Cyprus"},{"CZ": "Czech Republic"}]`
 countryCodeOG = JSON.parse(countryCodeOG);
-gameResult = [] //{'correct':'', 'answer':''}
-currentQzChoice = null
+let userName = '';
+let gameResult = []; //{'correct':'', 'answer':''}
+let currentQzChoice = null;
 let strikes = 0; //Incorrect Counter
 
 
@@ -62,6 +63,7 @@ $('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game
         alert('Please Enter Username to Continue!')
     }
     else {
+        userName = $('.uname').val() //Assign Username Input to Username Variable
         gameCode = shuffleCountry(countryCodeOG);
         newGameFlagQz()
     }
@@ -79,7 +81,7 @@ function onAnsSubmit(){
         checkAnswer()
         gameResult.at(-1).answer = currentQzChoice;
         currentQzChoice = null;
-        strikes < 3 ? newGameFlagQz() : alert('Game Over!');
+        strikes < 3 ? newGameFlagQz() : showGameResults();
     }
 }
 

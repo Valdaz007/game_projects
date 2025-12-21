@@ -89,5 +89,17 @@ class PlayTemp extends HTMLElement {
     }
 }
 
+class ResultTemp extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+            <h1>WORLDMAPQuiz Game</h1>
+            <h2 class='uname'>{Username} Results</h2>
+            <div class='mainresults'>
+            </div>
+        `
+    }
+}
+
 customElements.define('temp-index', TempIndex)
 customElements.define('temp-play', PlayTemp)
+customElements.define('temp-result', ResultTemp)
