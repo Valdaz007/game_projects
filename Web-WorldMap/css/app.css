@@ -107,12 +107,12 @@ body .main .catgs {
     }
 }
 
-body .main .hiscore-wrap {
+body .main .hiscore-wrap, .nextFlagQz {
     width: 80%;
     margin: 0 auto;
     max-width: 300px;
 
-    .hiscores {
+    .hiscores, .btnNextFlagQz {
         width: 100%;
         padding: .4rem;
         border: none;

@@ -74,6 +74,10 @@ class PlayTemp extends HTMLElement {
                         <p id='chc4'>Choice 4</p>
                     </div>
                 </div>
+
+                <div class='nextFlagQz'>
+                    <button id='btnNxtFlagQz' onclick='newGameFlagQz()'>Next Flag</button>
+                </div>
             </div>
         `
     }

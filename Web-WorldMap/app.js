@@ -32,20 +32,28 @@ $('#flagQz').click(function(e){
     }
     else {
         gameCode = shuffleCountry(countryCodeOG);
-        console.log(Object.keys(gameCode[0]).join(''))
-        $('body').empty()
-        $('body').append('<temp-play></temp-play>')
-        $('.playflag').append(`
-            <img src='https://flagsapi.com/${Object.keys(gameCode[0]).join('')}/flat/64.png'>
-        `);
-        let choiceArr = gameCode.slice(0, 4);
-        console.log(choiceArr[0][Object.keys(choiceArr[0]).join('')])
-        choiceArr = shuffleCountry(choiceArr)
-        choiceArr.forEach((i, idx) => {
-            $(`#chc${idx+1}`).text(`${i[Object.keys(i).join('')]}`)
-        });
+        newGameFlagQz()
     }
 })
+
+function newGameFlagQz(){
+    $('body').empty()
+    $('body').append('<temp-play></temp-play>')
+
+    $('.playflag').append(`
+        <img src='https://flagsapi.com/${Object.keys(gameCode[0]).join('')}/flat/64.png'>
+    `);
+
+    let choiceArr = gameCode.slice(0, 4);
+    gameResult.push({'correct':gameCode.shift()})
+    choiceArr = shuffleCountry(choiceArr)
+    choiceArr.forEach((i, idx) => {
+        $(`#chc${idx+1}`).text(`${i[Object.keys(i).join('')]}`)
+    });
+
+    console.log(gameCode)
+    console.log(gameResult)
+}
 
 $('#shapeQz').click(function(e){
     alert('Feature Still Under Developement!')
