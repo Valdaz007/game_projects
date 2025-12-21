@@ -1,4 +1,4 @@
-countryCode = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnistan"},{"AG":"Antigua & Barbuda"},
+countryCodeOG = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnistan"},{"AG":"Antigua & Barbuda"},
                 {"AI":"Anguilla"},{"AL":"Albanida"},{"AM":"Armenia"},{"AN":"Netherland Antilles"},{"AO":"Angola"},
                 {"AQ":"Antarctica"},{"AR":"Argentina"},{"AS":"America Somoa"},{"AT":"Austria"},{"AU":"Australia"},
                 {"AW":"Aruba"},{"AX":"Aland Islands"},{"AZ":"Azerbaijan"},{"BA": "Bosnia and Herzegovina"},
@@ -10,16 +10,41 @@ countryCode = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afghnistan
                 {"CH": "Switzerland"},{"CI": "Cote Dloire"},{"CK": "Cook Islands"},{"CL": "Chile"},{"CM": "Cameroon"},
                 {"CN": "China"},{"CO": "Colombia"},{"CR": "Costa Rica"},{"CU": "Cuba"},{"CV": "Cape Verde"},{"CW": "Curacoa"},
                 {"CX": "Christmas Island"},{"CY": "Cyprus"},{"CZ": "Czech Republic"}]`
-countryCode = JSON.parse(countryCode)
+countryCodeOG = JSON.parse(countryCodeOG);
+gameResult = [] //{'correct':'', 'answer':''}
 
-// countryCode.forEach((i)=>{
-//     $('.flags').append(`
-//         <img src='https://flagsapi.com/${Object.keys(i).join('')}/flat/64.png'>
-//     `)
-// })
+
+function shuffleCountry(array){
+    for(let i = array.length-1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+}
+
+function checkUsername(){
+    return $('.uname').val()==''
+}
 
 $('#flagQz').click(function(e){
-    alert('Feature Still Under Developement!')
+    if(checkUsername()){
+        alert('Please Enter Username to Continue!')
+    }
+    else {
+        gameCode = shuffleCountry(countryCodeOG);
+        console.log(Object.keys(gameCode[0]).join(''))
+        $('body').empty()
+        $('body').append('<temp-play></temp-play>')
+        $('.playflag').append(`
+            <img src='https://flagsapi.com/${Object.keys(gameCode[0]).join('')}/flat/64.png'>
+        `);
+        let choiceArr = gameCode.slice(0, 4);
+        console.log(choiceArr[0][Object.keys(choiceArr[0]).join('')])
+        choiceArr = shuffleCountry(choiceArr)
+        choiceArr.forEach((i, idx) => {
+            $(`#chc${idx+1}`).text(`${i[Object.keys(i).join('')]}`)
+        });
+    }
 })
 
 $('#shapeQz').click(function(e){
