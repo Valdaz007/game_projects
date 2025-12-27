@@ -20,17 +20,17 @@ class TempIndex extends HTMLElement {
 
             <div class="catgs">
                 <button class="catg" id="flagQz" onclick='newFlagGame()'>
-                    <img src="./icon-flag.jpg" alt="">
+                    <img src="./img/icon-flag.jpg" alt="">
                     <h5>Flag Quiz</h5>
                     <p>Guess the Flag of the Country</p>
                 </button>
                 <div class="catg" id="shapeQz">
-                    <img src="./icon-shape.jpg" alt="">
+                    <img src="./img/icon-shape.jpg" alt="">
                     <h5>Shape Quiz</h5>
                     <p>Guess the Border Shape of the Country</p>
                 </div>
                 <div class="catg" id="mixQz">
-                    <img src="./icon-flag.jpg" alt="">
+                    <img src="./img/icon-flag.jpg" alt="">
                     <h5>Mixed Quiz</h5>
                     <p>Mixed Quiz from both Flag & Shape</p>
                 </div>
