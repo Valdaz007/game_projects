@@ -19,11 +19,11 @@ class TempIndex extends HTMLElement {
             </div>
 
             <div class="catgs">
-                <div class="catg" id="flagQz">
+                <button class="catg" id="flagQz" onclick='newFlagGame()'>
                     <img src="./icon-flag.jpg" alt="">
                     <h5>Flag Quiz</h5>
                     <p>Guess the Flag of the Country</p>
-                </div>
+                </button>
                 <div class="catg" id="shapeQz">
                     <img src="./icon-shape.jpg" alt="">
                     <h5>Shape Quiz</h5>
@@ -93,7 +93,10 @@ class ResultTemp extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <h1>WORLDMAPQuiz Game</h1>
-            <h2 class='uname'>{Username} Results</h2>
+            <div class='resultTitle'>
+                <h2 class='uname'>{Username} Results</h2>
+                <button onclick='mainApp()'>Main Menu</button>
+            </div>
             <div class='mainresults'>
             </div>
         `

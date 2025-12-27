@@ -71,6 +71,7 @@ body .main .catgs {
         width: 100%;
         max-width: 168px;
         padding: .6rem .4rem;
+        background: none;
         border: 2px solid lightgoldenrodyellow;
         border-radius: .5rem;
         box-shadow: none;

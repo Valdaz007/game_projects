@@ -11,11 +11,22 @@ let countryCodeOG = `[{"AD":"Andorra"},{"AE":"United Arab Emirates"},{"AF":"Afgh
                 {"CN": "China"},{"CO": "Colombia"},{"CR": "Costa Rica"},{"CU": "Cuba"},{"CV": "Cape Verde"},{"CW": "Curacoa"},
                 {"CX": "Christmas Island"},{"CY": "Cyprus"},{"CZ": "Czech Republic"}]`
 countryCodeOG = JSON.parse(countryCodeOG);
+let gameCode = [];
 let userName = '';
 let gameResult = []; //{'correct':'', 'answer':''}
 let currentQzChoice = null;
 let strikes = 0; //Incorrect Counter
 
+function mainApp(){
+    $('body').empty()
+    $('body').append('<temp-index></temp-index>')
+
+    gameCode = [];
+    gameResult = [];
+    currentQzChoice = null;
+    strikes = 0;
+    $('.uname').val(userName)
+}
 
 function shuffleCountry(array){
     //Function to Randomize an Array
@@ -58,16 +69,16 @@ function setCurrentQzChoice(choice, idx){
     );
 }
 
-$('#flagQz').click(function(e){ //Event Listener for Flag Quiz Game
+function newFlagGame(){ //Event Listener for Flag Quiz Game
     if(checkUsername()){
         alert('Please Enter Username to Continue!')
     }
     else {
         userName = $('.uname').val() //Assign Username Input to Username Variable
-        gameCode = shuffleCountry(countryCodeOG);
+        gameCode = shuffleCountry(countryCodeOG.slice())
         newGameFlagQz()
     }
-})
+}
 
 function checkAnswer(){
     gameResult.at(-1).correct!=currentQzChoice && strikes++;
@@ -111,7 +122,7 @@ function newGameFlagQz(){
     });
 
     // console.log(gameCode)
-    console.log(gameResult)
+    // console.log(gameResult)
 }
 
 $('#shapeQz').click(function(e){ //Event Listener for Shape Quiz Game
